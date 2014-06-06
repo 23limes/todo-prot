@@ -31,8 +31,6 @@ describe('TodoMVC homepage', function() {
 
  	}, 12000);
 
-  
-
 /*
   it('should add one item then complete it', function() {
 
@@ -45,7 +43,11 @@ describe('TodoMVC homepage', function() {
     firstTodo.element(by.css('button')).click();
 
   }, 12000);
+*/
 
+
+/*
+  //run the rest as a group
 
   it('should add two items', function() {
     todoInput.sendKeys('My first item', protractor.Key.ENTER).then(function(){
