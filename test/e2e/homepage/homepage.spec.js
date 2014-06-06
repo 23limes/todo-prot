@@ -31,7 +31,9 @@ describe('TodoMVC homepage', function() {
 
  	}, 12000);
 
+  
 
+/*
   it('should add one item then complete it', function() {
 
     todoInput.sendKeys('My first item', protractor.Key.ENTER);
@@ -79,7 +81,7 @@ describe('TodoMVC homepage', function() {
 	  firstTodo.element(by.css('button')).click();
 	  expect(countLabel2.getText()).toEqual('');
   }, 12000);
-
+*/
   
 
 });
