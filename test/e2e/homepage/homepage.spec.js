@@ -1,9 +1,7 @@
 describe('TodoMVC homepage', function() {
 
 	var todoInput = element(by.model('newTodo'));
-	var countLabel = element(by.binding('remainingCount'));
-	//you can use this since there are multiple 'remainingCount' bindings on the page
-	var countLabel2 = element(by.css('#todo-count strong')); 
+	var countLabel = element(by.css('#todo-count strong')); 
 	var todoCompletes = element.all(by.model('todo.completed'));
 	var firstTodo = element(by.repeater('todo in todos').row(0));
 	var removeButtons = element.all(by.css('[ng-click="removeTodo(todo)"]'));
@@ -15,11 +13,14 @@ describe('TodoMVC homepage', function() {
   });
 
   afterEach(function(){
+    //this is here just to illustrate the afterEach method, and to let you see what's happening
+    //on the screen while the test is running - take this out for your real tests!
   	browser.driver.sleep(1000);
   });
 
 
-  it('should add one item', function() {
+  //run this test by itself (eg: iit) to see the repeater locator in action
+  xit('should add one item', function() {
   	todoInput.sendKeys('My first item', protractor.Key.ENTER).then(function(){
 	  	var todoTitle = element(by.repeater('todo in todos').row(0).column('{{todo.title}}')).getText();
 	  	expect(todoTitle).toEqual('My first item');
@@ -31,28 +32,13 @@ describe('TodoMVC homepage', function() {
 
  	}, 12000);
 
-/*
-  it('should add one item then complete it', function() {
 
-    todoInput.sendKeys('My first item', protractor.Key.ENTER);
-    expect(countLabel2.getText()).toEqual('1');
-    todoCompletes.get(0).click();
-    expect(countLabel2.getText()).toEqual('0');
-
-    //remove our test item
-    firstTodo.element(by.css('button')).click();
-
-  }, 12000);
-*/
-
-
-/*
-  //run the rest as a group
+  //you can run the rest as a group - all together
 
   it('should add two items', function() {
     todoInput.sendKeys('My first item', protractor.Key.ENTER).then(function(){
 	    todoInput.sendKeys('My second item', protractor.Key.ENTER).then(function(){
-	    	expect(countLabel2.getText()).toEqual('2');
+	    	expect(countLabel.getText()).toEqual('2');
 	  	});
     });
   }, 12000);
@@ -77,13 +63,13 @@ describe('TodoMVC homepage', function() {
   it('should remove two items', function() {
     todoCompletes.get(0).click();
 	  firstTodo.element(by.css('button')).click();
-	  expect(countLabel2.getText()).toEqual('1');
+	  expect(countLabel.getText()).toEqual('1');
 
 	  todoCompletes.get(0).click();
 	  firstTodo.element(by.css('button')).click();
-	  expect(countLabel2.getText()).toEqual('');
+	  expect(countLabel.getText()).toEqual('');
   }, 12000);
-*/
+
   
 
 });
